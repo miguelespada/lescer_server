@@ -1,0 +1,30 @@
+h1 Listing sessions
+
+table
+  thead
+    tr
+      th TIME
+      th PATIENT
+      th EXERCICE
+      th
+      th
+      th
+      th
+
+  tbody
+    - @sessions.each do |session|
+      tr class="selected_#{session.selected}"
+        td = session.timestamp
+        td = session.patient.name if !session.patient.nil?
+        td = session.exercice.name if !session.exercice.nil?
+        td = link_to 'Select', select_session_path(session)
+        td = link_to 'Show', session
+        td = link_to 'Edit', edit_session_path(session)
+        td = link_to 'Destroy', session, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = link_to session.patient.name + ".csv", csv_session_path(session, format: "csv") if !session.patient.nil? 
+        - if !session.selected
+          td = link_to 'Select', select_session_path(session) 
+br
+
+
+= will_paginate @sessions

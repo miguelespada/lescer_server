@@ -1,0 +1,17 @@
+p#notice = notice
+
+p
+  strong TIME:
+  = @session.timestamp
+
+p
+  strong PATIENT:
+  = @session.patient.name
+
+p
+  strong EXERCICE:
+  = @session.exercice.name
+
+= link_to 'Edit', edit_session_path(@session)
+'|
+= link_to 'Back', sessions_path

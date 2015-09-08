@@ -1,0 +1,28 @@
+h1 Listing patients
+
+table
+  thead
+    tr
+      th Name
+      th
+      th
+      th
+      th
+      th
+
+  tbody 
+    - @patients.each do |patient|
+      tr class="selected_#{patient.selected}"
+        td = patient.name
+        td = link_to 'Show', patient
+        td = link_to 'Edit', edit_patient_path(patient)
+        td = link_to 'Destroy', patient, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+        - if !patient.selected
+          td = link_to 'Select', select_patient_path(patient) 
+
+br
+
+= link_to 'New Patient', new_patient_path
+
+= will_paginate @patients

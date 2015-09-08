@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @exercice.name
+
+= link_to 'Edit', edit_exercice_path(@exercice)
+'|
+= link_to 'Back', exercices_path

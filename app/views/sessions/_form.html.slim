@@ -1,0 +1,10 @@
+= simple_form_for(@session) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :data, as: :text
+    = f.association :patient
+    = f.association :exercice
+
+  .form-actions
+    = f.button :submit

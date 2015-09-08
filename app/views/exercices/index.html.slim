@@ -1,0 +1,26 @@
+h1 Listing exercices
+
+table
+  thead
+    tr
+      th Name
+      th Width
+      th Height
+      th
+      th
+      th
+
+  tbody
+    - @exercices.each do |exercice|
+      tr class="selected_#{exercice.selected}"
+        td = exercice.name
+        td = exercice.width
+        td = exercice.height
+        td = link_to 'Show', exercice
+        td = link_to 'Edit', edit_exercice_path(exercice)
+        td = link_to 'Destroy', exercice, data: {:confirm => 'Are you sure?'}, :method => :delete
+        - if !exercice.selected
+          td = link_to 'Select', select_exercice_path(exercice) 
+br
+
+= link_to 'New Exercice', new_exercice_path
