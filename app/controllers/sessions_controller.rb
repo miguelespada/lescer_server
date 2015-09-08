@@ -52,8 +52,8 @@ class SessionsController < ApplicationController
     if @session.nil?
       last = Session.last
       @session = Session.new()
-      @session.patient = last.patient
-      @session.exercice = last.exercice 
+      @session.patient = Patient.selected
+      @session.exercice = Exercice.selected 
     end
     @session.data = params["data"]
     @session.timestamp = timestamp
