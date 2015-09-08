@@ -2,6 +2,7 @@ TestMongoId::Application.routes.draw do
 
 
   devise_for :users
+
   resources :exercices do
     member do
       get 'select'
@@ -30,7 +31,7 @@ TestMongoId::Application.routes.draw do
     end
   end
 
-  root "static_pages#home"
+  root to: "static_pages#home"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

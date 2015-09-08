@@ -1,5 +1,6 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy, :select]
+  # before_action :authenticate_user!, except: [:selected]
 
   # GET /patients
   # GET /patients.json

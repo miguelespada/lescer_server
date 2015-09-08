@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :set_session, only: [:show, :edit, :update, :destroy, :select, :csv]
+  # before_action :authenticate_user!, except: [:upload, :download]
 
   # GET /sessions
   # GET /sessions.json
