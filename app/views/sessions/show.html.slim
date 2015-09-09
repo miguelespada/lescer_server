@@ -1,17 +1,18 @@
 p#notice = notice
 
-p
-  strong TIME:
-  = @session.timestamp
+div.container
+  p
+    strong TIME: 
+    = @session.timestamp
+  
+  p
+    strong PATIENT: 
+    = @session.patient.name
+  
+  p
+    strong EXERCICE: 
+    = @session.exercice.name
+  
+  = link_to 'Edit', edit_session_path(@session), :class => "btn btn-default"
 
-p
-  strong PATIENT:
-  = @session.patient.name
-
-p
-  strong EXERCICE:
-  = @session.exercice.name
-
-= link_to 'Edit', edit_session_path(@session)
-'|
-= link_to 'Back', sessions_path
+  = link_to 'Back', sessions_path, :class => "btn btn-info"

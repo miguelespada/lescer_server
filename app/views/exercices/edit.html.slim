@@ -1,8 +1,8 @@
-h1 Editing exercice
-
-== render 'form'
-
-= link_to 'Show', @exercice
-'|
-= link_to 'Back', exercices_path
+div.container
+  h1 Editing exercice
+  
+  == render 'form'
+  
+  = link_to 'Show', @exercice, :class => "btn btn-default"
+  = link_to 'Back', exercices_path, :class => "btn btn-info"
 

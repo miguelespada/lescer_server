@@ -1,9 +1,9 @@
 p#notice = notice
 
-p
-  strong Name:
-  = @exercice.name
-
-= link_to 'Edit', edit_exercice_path(@exercice)
-'|
-= link_to 'Back', exercices_path
+div.container
+  h1
+    span Name: 
+    = @exercice.name
+  
+  = link_to 'Edit', edit_exercice_path(@exercice), :class => "btn btn-default"
+  = link_to 'Back', exercices_path, :class => "btn btn-info"

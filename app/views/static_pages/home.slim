@@ -1,5 +1,6 @@
-p = link_to "Pacientes", patients_path
-p = link_to "Ejercicios", exercices_path
-p = link_to "Sesiones", sessions_path
+div.container
+  p = link_to "Pacientes", patients_path, :class => "btn btn-default"
+  p = link_to "Ejercicios", exercices_path, :class => "btn btn-default"
+  p = link_to "Sesiones", sessions_path, :class => "btn btn-default"
 
 / = link_to('Logout', destroy_user_session_path, :method => :delete) 

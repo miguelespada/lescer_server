@@ -1,8 +1,8 @@
-h1 Editing session
+div.container
+  h1 Editing session
 
-== render 'form'
+  == render 'form'
 
-= link_to 'Show', @session
-'|
-= link_to 'Back', sessions_path
+  = link_to 'Show', @session, :class => "btn btn-default"
+  = link_to 'Back', sessions_path, :class => "btn btn-info"
 

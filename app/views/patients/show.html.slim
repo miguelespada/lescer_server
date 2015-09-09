@@ -1,37 +1,34 @@
 p#notice = notice
 
-p
-  strong Name:
-  = @patient.name
+div.container
+  h1 = @patient.name
 
-
-= link_to 'Edit', edit_patient_path(@patient)
-'|
-= link_to 'Back', patients_path
-
-h3 Sesiones
-
-table
-  thead
-    tr
-      th TIME
-      th PATIENT
-      th EXERCICE
-      th
-      th
-      th
-      th
-
-  tbody
-    - @patient.sessions.each do |session|
+  = link_to 'Edit', edit_patient_path(@patient), :class => "btn btn-default"
+  = link_to 'Back', patients_path, :class => "btn btn-info"
+  
+  h3 Sesiones
+  
+  table.table.table-striped
+    thead
       tr
-        td = session.timestamp
-        td = session.patient.name if !session.patient.nil?
-        td = session.exercice.name if !session.exercice.nil?
-        td = link_to 'Select', select_session_path(session)
-        td = link_to 'Show', session
-        td = link_to 'Edit', edit_session_path(session)
-        td = link_to 'Destroy', session, data: {:confirm => 'Are you sure?'}, :method => :delete
-        td = link_to 'csv', csv_session_path(session, format: "csv")
-        td = session.selected
-br
+        th TIME
+        th PATIENT
+        th EXERCICE
+        th
+        th
+        th
+        th
+  
+    tbody
+      - @patient.sessions.each do |session|
+        tr
+          td = session.timestamp
+          td = session.patient.name if !session.patient.nil?
+          td = session.exercice.name if !session.exercice.nil?
+          td = link_to 'Select', select_session_path(session)
+          td = link_to 'Show', session
+          td = link_to 'Edit', edit_session_path(session)
+          td = link_to 'Destroy', session, data: {:confirm => 'Are you sure?'}, :method => :delete
+          td = link_to 'csv', csv_session_path(session, format: "csv")
+          td = session.selected
+  br
