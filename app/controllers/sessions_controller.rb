@@ -61,6 +61,9 @@ class SessionsController < ApplicationController
     @session.ref_x = params["ref_x"]
     @session.ref_y = params["ref_y"]
     @session.ref_z = params["ref_z"]
+    @session.left_movs = params["left_movs"]
+    @session.right_movs = params["right_movs"]
+    @session.reactions = params["reactions"]
     select_session @session
     render json: @session
   end
@@ -72,9 +75,13 @@ class SessionsController < ApplicationController
       :timestamp => @session.timestamp,
       :patient => @session.patient.name,
       :exercice => @session.exercice.name,
-      :ref_x => @session.ref_x,
-      :ref_y => @session.ref_y,
-      :ref_z => @session.ref_z}
+      :ref_x => @session.ref_x || 0,
+      :ref_y => @session.ref_y || 0,
+      :ref_z => @session.ref_z || 0,
+      :left_movs => @session.left_movs || 0,
+      :right_movs => @session.right_movs || 0,
+      :reactions => @session.reactions || ""
+    }
     render json: json
   end
 
@@ -106,7 +113,9 @@ class SessionsController < ApplicationController
     end
 
     def session_params
-      params.require(:session).permit(:data, :patient_id, :exercice_id, :ref_x, :ref_y, :ref_z)
+      params.require(:session).permit(:data, :patient_id, :exercice_id, 
+                                      :ref_x, :ref_y, :ref_z,
+                                      :left_movs, :right_movs, :reactions)
     end
 
     def select_session session
