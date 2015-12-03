@@ -1,6 +1,7 @@
 div.container
   h1 Sessiones
   
+  = will_paginate @sessions
   table.table.table-striped
     thead
       tr
@@ -27,4 +28,3 @@ div.container
   br
   
   
-  = will_paginate @sessions

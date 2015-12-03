@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   # GET /sessions
   # GET /sessions.json
   def index
-    @sessions = Session.asc(:created_at).paginate(:page => params[:page], :per_page => 30)
+    @sessions = Session.desc(:created_at).paginate(:page => params[:page], :per_page => 30)
   end
 
   # GET /sessions/1
@@ -58,6 +58,12 @@ class SessionsController < ApplicationController
     end
     @session.data = params["data"]
     @session.timestamp = timestamp
+    @session.ref_x = params["ref_x"]
+    @session.ref_y = params["ref_y"]
+    @session.ref_z = params["ref_z"]
+    @session.left_movs = params["left_movs"]
+    @session.right_movs = params["right_movs"]
+    @session.reactions = params["reactions"]
     select_session @session
     render json: @session
   end
@@ -65,9 +71,17 @@ class SessionsController < ApplicationController
   def selected
     @session = Session.where(selected: :true).first
     @session = Session.last if @session.nil?
-    json = {:data => @session.data, 
+    json = {:data => @session.data,
+      :timestamp => @session.timestamp,
       :patient => @session.patient.name,
-      :exercice => @session.exercice.name}
+      :exercice => @session.exercice.name,
+      :ref_x => @session.ref_x || 0,
+      :ref_y => @session.ref_y || 0,
+      :ref_z => @session.ref_z || 0,
+      :left_movs => @session.left_movs || 0,
+      :right_movs => @session.right_movs || 0,
+      :reactions => @session.reactions || ""
+    }
     render json: json
   end
 
@@ -85,8 +99,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  # DELETE /sessions/1
-  # DELETE /sessions/1.json
   def destroy
     @session.destroy
     respond_to do |format|
@@ -96,14 +108,14 @@ class SessionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_session
       @session = Session.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def session_params
-      params.require(:session).permit(:data, :patient_id, :exercice_id)
+      params.require(:session).permit(:data, :patient_id, :exercice_id, 
+                                      :ref_x, :ref_y, :ref_z,
+                                      :left_movs, :right_movs, :reactions)
     end
 
     def select_session session
