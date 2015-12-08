@@ -54,7 +54,7 @@ class SessionsController < ApplicationController
       last = Session.last
       @session = Session.new()
       @session.patient = Patient.selected
-      @session.exercice = Exercice.selected 
+      @session.exercice = Exercice.selected
     end
     @session.data = params["data"]
     @session.timestamp = timestamp
@@ -80,7 +80,11 @@ class SessionsController < ApplicationController
       :ref_z => @session.ref_z || 0,
       :left_movs => @session.left_movs || 0,
       :right_movs => @session.right_movs || 0,
-      :reactions => @session.reactions || ""
+      :reactions => @session.reactions || "",
+      :x => @session.exercice.x || 0,
+      :width => @session.exercice.width || 0,
+      :y => @session.exercice.y || 0,
+      :height => @session.exercice.height || 0
     }
     render json: json
   end

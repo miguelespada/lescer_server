@@ -28,7 +28,12 @@ class PatientsController < ApplicationController
   
     json = {:exercice => exercice.name,
             :patient => patient.name,
-            :data => ""}
+            :data => "",
+            :x => exercice.x || 0,
+            :width => exercice.width || 0,
+            :y => exercice.y || 0,
+            :height =>  exercice.height || 0
+          }
     render json: json
   end
 
