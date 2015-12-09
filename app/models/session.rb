@@ -10,6 +10,10 @@ class Session
   field :reactions, type: String
   field :data, type: String
   field :selected, type: Boolean
+  field :x, type: Integer
+  field :y, type: Integer
+  field :width, type: Integer
+  field :height, type: Integer
 
   belongs_to :patient
   belongs_to :exercice

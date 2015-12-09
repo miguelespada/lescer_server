@@ -7,6 +7,8 @@ div.container
         th Name
         th Width
         th Height
+        th x
+        th y
         th
         th
         th
@@ -17,6 +19,8 @@ div.container
           td = exercice.name
           td = exercice.width
           td = exercice.height
+          td = exercice.x
+          td = exercice.y
           td = link_to 'Show', exercice
           td = link_to 'Edit', edit_exercice_path(exercice)
           td = link_to 'Destroy', exercice, data: {:confirm => 'Are you sure?'}, :method => :delete
