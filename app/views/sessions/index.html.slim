@@ -20,6 +20,8 @@ div.container
           td = session.patient.name if !session.patient.nil?
           td = session.exercice.name if !session.exercice.nil?
           td = link_to 'Show', session
+          td = link_to 'Report', report_session_path(session)
+          td = link_to 'Heatmap', heatmap_session_path(session)
           td = link_to 'Edit', edit_session_path(session)
           td = link_to 'Destroy', session, data: {:confirm => 'Are you sure?'}, :method => :delete
           td = link_to session.patient.name + ".csv", csv_session_path(session, format: "csv") if !session.patient.nil? 

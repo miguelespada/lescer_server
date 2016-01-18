@@ -1,3 +1,4 @@
+
 p#notice = notice
 
 div.container
@@ -18,7 +19,9 @@ div.container
   p
     strong MOVS: 
     = "#{@session.left_movs} -- #{@session.right_movs}"
-  
+
+  = link_to 'Heatmap', heatmap_session_path(@session), :class => "btn btn-default"
+
   = link_to 'Edit', edit_session_path(@session), :class => "btn btn-default"
 
   = link_to 'Back', sessions_path, :class => "btn btn-info"
