@@ -23,10 +23,13 @@ TestMongoId::Application.routes.draw do
     member do
       get 'select'
       get 'csv'
+      get 'heatmap'
+      get 'report'
     end
 
     collection do
       post 'upload'
+      post 'uploadHeatmap'
       get 'selected'
     end
   end

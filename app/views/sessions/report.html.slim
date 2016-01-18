@@ -1,0 +1,18 @@
+= @session.patient.name
+
+
+- table = @session.report
+
+table
+  - 11.times do |x| 
+    tr
+      - 11.times do |y| 
+        td.cell 
+          = (table[x][y].to_i /  @session.rows.count.to_f * 100).round(2) 
+
+css:
+  .cell {
+     border: 1px solid black;
+     width: 100px;
+     text-align: center;
+  }

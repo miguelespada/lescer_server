@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :set_session, only: [:show, :edit, :update, :destroy, :select, :csv]
+  before_action :set_session, only: [:report, :show, :heatmap, :edit, :update, :destroy, :select, :csv]
   # before_action :authenticate_user!, except: [:upload, :download]
 
   # GET /sessions
@@ -31,6 +31,12 @@ class SessionsController < ApplicationController
     redirect_to sessions_path
   end
 
+  def heatmap
+  end
+
+  def report
+  end
+
   # POST /sessions
   # POST /sessions.json
   def create
@@ -46,6 +52,23 @@ class SessionsController < ApplicationController
       end
     end
   end
+
+  def uploadHeatmap
+
+    timestamp =  params["timestamp"]
+    @session = Session.where(timestamp: timestamp).first
+
+    @session.rows = Array.new
+    params["heatmap"].split("\n").each_with_index do |r, i|
+        tokens = r.split(";")
+        x = map(tokens[0].to_f, -120, 120, 0, 400);
+        y = map(tokens[1].to_f, 120, -120, 0, 400);
+        @session.rows << [y.to_i , x.to_i]
+    end
+    @session.save!
+    render json: @session
+  end
+
 
   def upload
     timestamp =  params["timestamp"]
@@ -126,4 +149,8 @@ class SessionsController < ApplicationController
       Session.update_all(selected: :false)
       session.update(selected: :true)
     end
+    def map value, inputMin, inputMax, outputMin, outputMax
+      ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);  
+    end
+  
 end
