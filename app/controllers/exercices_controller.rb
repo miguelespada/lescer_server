@@ -19,6 +19,19 @@ class ExercicesController < ApplicationController
     redirect_to exercices_path
   end
 
+
+  def selectByName
+    @exercice = Exercice.where(name: params[:name]).first
+    Exercice.update_all(selected: :false)
+    
+    respond_to do |format|
+      if @exercice.update(selected: :true)
+        format.json { head :no_content }
+      end
+    end
+  end
+
+
   # GET /exercices/new
   def new
     @exercice = Exercice.new

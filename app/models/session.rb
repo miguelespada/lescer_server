@@ -1,6 +1,7 @@
 class Session
   include Mongoid::Document
   include Mongoid::Timestamps
+  field :comments, type: String
   field :timestamp, type: String
   field :ref_x, type: Integer
   field :ref_y, type: Integer

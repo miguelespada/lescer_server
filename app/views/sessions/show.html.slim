@@ -1,6 +1,4 @@
 
-p#notice = notice
-
 div.container
   p
     strong TIME: 
@@ -13,15 +11,12 @@ div.container
   p
     strong EXERCICE: 
     = @session.exercice.name
-  p
-    strong REACTIONS: 
-    = @session.reactions
-  p
-    strong MOVS: 
-    = "#{@session.left_movs} -- #{@session.right_movs}"
-
-  = link_to 'Heatmap', heatmap_session_path(@session), :class => "btn btn-default"
-
+ 
+  p 
+    strong COMMENTS:
+    = @session.comments
+ 
+ 
   = link_to 'Edit', edit_session_path(@session), :class => "btn btn-default"
 
   = link_to 'Back', sessions_path, :class => "btn btn-info"

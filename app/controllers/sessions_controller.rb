@@ -140,7 +140,7 @@ class SessionsController < ApplicationController
     end
 
     def session_params
-      params.require(:session).permit(:data, :patient_id, :exercice_id, 
+      params.require(:session).permit(:data, :comments, :patient_id, :exercice_id, 
                                       :ref_x, :ref_y, :ref_z,
                                       :left_movs, :right_movs, :reactions)
     end
