@@ -13,7 +13,8 @@
 //= require heatmap
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require twitter/bootstrap
-//= require_tree .
 //= require bootstrap-timepicker
 //= require twitter/bootstrap
+//= require_tree .
