@@ -185,6 +185,7 @@ DEPENDENCIES
   bson_ext
   coffee-rails (~> 4.0.0)
   devise
+  execjs
   factory_girl_rails (~> 4.0)
   jbuilder (~> 1.2)
   jquery-rails
