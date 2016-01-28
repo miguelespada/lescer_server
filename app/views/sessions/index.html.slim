@@ -6,7 +6,6 @@ div.container
     thead
       tr
         th.data TIME
-        th.data PATIENT
         th.data EXERCICE
         th.data COMMENTS
         th
@@ -24,8 +23,10 @@ div.container
               = "Rows: #{session.getSize}"
             br
             small = session.timestamp
-          td.data = session.patient.name if !session.patient.nil?
-          td.data = session.exercice.name if !session.exercice.nil?
+          td.data 
+            b = session.patient.name if !session.patient.nil?
+            br
+            = session.exercice.name if !session.exercice.nil?
           td.data.comments = session.comments 
           td = link_to 'Show', session
           td = link_to 'Edit', edit_session_path(session)

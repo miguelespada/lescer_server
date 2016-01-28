@@ -1,6 +1,5 @@
 TestMongoId::Application.routes.draw do
 
-
   devise_for :users
 
 
@@ -32,6 +31,5 @@ TestMongoId::Application.routes.draw do
   end
 
   root to: "static_pages#home"
-
 
 end
