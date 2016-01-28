@@ -1,13 +1,13 @@
 div.container
-  h1 Sessiones
+  h1 Sesiones
   
   = will_paginate @sessions
   table.table.table-striped
     thead
       tr
-        th.data TIME
-        th.data EXERCICE
-        th.data COMMENTS
+        th.data HORA
+        th.data EJERCICIO
+        th.data COMENTARIOS
         th
         th
         th
@@ -18,7 +18,7 @@ div.container
           td.data 
             b 
               - d = DateTime.strptime(session.timestamp, '%Y-%m-%d-%H-%M-%S-%L')
-              = d.strftime('%H:%M (%d-%m-%Y)')
+              = d.strftime('%d-%m-%Y %H:%M')
               br
               = "Rows: #{session.getSize}"
             br
@@ -28,11 +28,11 @@ div.container
             br
             = session.exercice.name if !session.exercice.nil?
           td.data.comments = session.comments 
-          td = link_to 'Show', session
-          td = link_to 'Edit', edit_session_path(session)
-          td = link_to 'Destroy', session, data: {:confirm => 'Are you sure?'}, :method => :delete
+          td = link_to 'Mostrar', session
+          td = link_to 'Editar', edit_session_path(session)
+          td = link_to 'Borrar', session, data: {:confirm => 'Are you sure?'}, :method => :delete
           - if !session.selected
-            td = link_to 'Select', select_session_path(session) 
+            td = link_to 'Seleccionar', select_session_path(session) 
   br
   
 css:
