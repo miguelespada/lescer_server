@@ -5,20 +5,26 @@ div.container
   table.table.table-striped
     thead
       tr
-        th TIME
-        th PATIENT
-        th EXERCICE
-        th
+        th.data TIME
+        th.data PATIENT
+        th.data EXERCICE
+        th.data COMMENTS
         th
         th
         th
   
     tbody
       - @sessions.each do |session|
-        tr class="selected_#{session.selected}"
-          td = session.timestamp
-          td = session.patient.name if !session.patient.nil?
-          td = session.exercice.name if !session.exercice.nil?
+        tr class="selected-#{session.selected}"
+          td.data 
+            b 
+              - d = DateTime.strptime(session.timestamp, '%Y-%m-%d-%H-%M-%S-%L')
+              = d.strftime('%H:%M (%d-%m-%Y)')
+            br
+            small = session.timestamp
+          td.data = session.patient.name if !session.patient.nil?
+          td.data = session.exercice.name if !session.exercice.nil?
+          td.data.comments = session.comments 
           td = link_to 'Show', session
           td = link_to 'Edit', edit_session_path(session)
           td = link_to 'Destroy', session, data: {:confirm => 'Are you sure?'}, :method => :delete
@@ -26,4 +32,22 @@ div.container
             td = link_to 'Select', select_session_path(session) 
   br
   
-  
+css:
+  table, th, td {
+     border: 1px solid gray;
+  }
+  tr.selected-true{
+    color: green;
+  }
+  tr.selected-false{
+    color: gray;
+  }
+  .comments{
+    overflow: ellipsis;
+  }
+  th{
+    text-align: left;
+  }
+  .data{
+    min-width: 200px;
+  }
