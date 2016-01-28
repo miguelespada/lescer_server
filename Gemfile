@@ -3,12 +3,12 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-#ruby '2.1.5' #Windows ruby version
-ruby '2.2.2'
+ruby '2.1.5' #Windows ruby version
+#ruby '2.2.2'
 
 gem "bson_ext"
 gem "mongoid", ">= 2.0.0.beta.19"
-
+gem "execjs"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
