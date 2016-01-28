@@ -5,6 +5,7 @@ div.container
   table.table.table-striped
     thead
       tr
+        th
         th.data HORA
         th.data EJERCICIO
         th.data COMENTARIOS
@@ -15,12 +16,16 @@ div.container
     tbody
       - @sessions.each do |session|
         tr class="selected-#{session.selected}"
+          - if !session.selected
+            td = link_to 'Seleccionar', select_session_path(session)
+          - else
+            td 
           td.data 
             b 
               - d = DateTime.strptime(session.timestamp, '%Y-%m-%d-%H-%M-%S-%L')
               = d.strftime('%d-%m-%Y %H:%M')
-              br
-              = "Rows: #{session.getSize}"
+            br
+            small = "Duración: #{session.getSize/30 / 60}:#{(session.getSize/30) % 60} aprox" 
             br
             small = session.timestamp
           td.data 
@@ -31,12 +36,11 @@ div.container
           td = link_to 'Mostrar', session
           td = link_to 'Editar', edit_session_path(session)
           td = link_to 'Borrar', session, data: {:confirm => 'Are you sure?'}, :method => :delete
-          - if !session.selected
-            td = link_to 'Seleccionar', select_session_path(session) 
+
   br
   
 css:
-  table, th, td {
+  table, td {
      border: 1px solid gray;
   }
   tr.selected-true{
@@ -53,4 +57,8 @@ css:
   }
   .data{
     min-width: 200px;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
   }
