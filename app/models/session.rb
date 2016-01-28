@@ -15,34 +15,21 @@ class Session
   field :y, type: Integer
   field :width, type: Integer
   field :height, type: Integer
+  field :size, type: Integer
 
   belongs_to :patient
   belongs_to :exercice
   accepts_nested_attributes_for :patient
   accepts_nested_attributes_for :exercice
 
-  field :rows, type: Array
-
-
-  def report
-    
-    table = []
-    11.times do |x| 
-      table << []
-      11.times do 
-        table[x] << 0
-      end
+  def getSize
+    if self.size.nil?
+      self.size = data.split("\n").count - 1
+      self.save!
     end
-    rows.each do |r|
-      hist_x = map(r[0].to_f, 0, 400, 0, 11)
-      hist_y = map(r[1].to_f, 400, 0, 0, 11)
-      table[hist_y][hist_x] += 1
-    end
-    table
+    self.size
   end
 
-  def map value, inputMin, inputMax, outputMin, outputMax
-    ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin)
-  end
+ 
 
 end

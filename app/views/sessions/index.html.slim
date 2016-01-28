@@ -20,6 +20,8 @@ div.container
             b 
               - d = DateTime.strptime(session.timestamp, '%Y-%m-%d-%H-%M-%S-%L')
               = d.strftime('%H:%M (%d-%m-%Y)')
+              br
+              = "Rows: #{session.getSize}"
             br
             small = session.timestamp
           td.data = session.patient.name if !session.patient.nil?

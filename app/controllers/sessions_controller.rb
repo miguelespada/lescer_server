@@ -22,19 +22,10 @@ class SessionsController < ApplicationController
   def edit
   end
 
-  def csv
-    send_data @session.data
-  end
 
   def select
     select_session @session
     redirect_to sessions_path
-  end
-
-  def heatmap
-  end
-
-  def report
   end
 
   # POST /sessions
@@ -51,22 +42,6 @@ class SessionsController < ApplicationController
         format.json { render json: @session.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def uploadHeatmap
-
-    timestamp =  params["timestamp"]
-    @session = Session.where(timestamp: timestamp).first
-
-    @session.rows = Array.new
-    params["heatmap"].split("\n").each_with_index do |r, i|
-        tokens = r.split(";")
-        x = map(tokens[0].to_f, -120, 120, 0, 400);
-        y = map(tokens[1].to_f, 120, -120, 0, 400);
-        @session.rows << [y.to_i , x.to_i]
-    end
-    @session.save!
-    render json: @session
   end
 
 
@@ -149,8 +124,4 @@ class SessionsController < ApplicationController
       Session.update_all(selected: :false)
       session.update(selected: :true)
     end
-    def map value, inputMin, inputMax, outputMin, outputMax
-      ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);  
-    end
-  
 end
