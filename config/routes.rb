@@ -2,7 +2,7 @@ TestMongoId::Application.routes.draw do
 
   devise_for :users
 
-
+  post 'exerciceByName'  =>  'exercices#selectByName'
   resources :exercices do
     member do
       get 'select'
