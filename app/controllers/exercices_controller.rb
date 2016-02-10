@@ -21,14 +21,13 @@ class ExercicesController < ApplicationController
 
 
   def selectByName
-    @exercice = Exercice.where(name: params[:name]).first
-    Exercice.update_all(selected: :false)
-    @exercice.update(selected: :true)
-    
+    Exercice.each do |e|
+      e.selected = false if e.name != params[:name]
+      e.selected = true if e.name == params[:name]
+      e.save
+    end
     respond_to do |format|
-      if @exercice.save!
         format.json { head :no_content }
-      end
     end
   end
 
