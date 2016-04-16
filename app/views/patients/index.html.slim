@@ -2,28 +2,44 @@ div.container
   h1 Pacientes
   
   table.table.table-striped
-    thead
-      tr
-        th Name
-        th
-        th
-        th
-        th
-        th
-  
     tbody 
       - @patients.each do |patient|
-        tr class="selected_#{patient.selected}"
+        tr class="selected-#{patient.selected}"
+          - if !patient.selected
+            td = link_to 'Seleccionar', select_patient_path(patient)
+          - else
+            td 
           td = patient.name
-          td = link_to 'Show', patient
           td = link_to 'Edit', edit_patient_path(patient)
           td = link_to 'Destroy', patient, data: {:confirm => 'Are you sure?'}, :method => :delete
   
-          - if !patient.selected
-            td = link_to 'Select', select_patient_path(patient)
   
   br
   
   = link_to 'New Patient', new_patient_path, :class => "btn btn-info"
   
   = will_paginate @patients
+
+css:
+  table, td {
+     border: 1px solid gray;
+  }
+  tr.selected-true{
+    color: green;
+  }
+  tr.selected-false{
+    color: gray;
+  }
+  .comments{
+    overflow: ellipsis;
+  }
+  th{
+    text-align: left;
+  }
+  .data{
+    min-width: 200px;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
