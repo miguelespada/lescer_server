@@ -25,7 +25,7 @@ div.container
               - d = DateTime.strptime(session.timestamp, '%Y-%m-%d-%H-%M-%S-%L')
               = d.strftime('%d-%m-%Y %H:%M')
             br
-            small = "Duración: #{session.getSize/30 / 60}:#{(session.getSize/30) % 60} aprox" 
+            small = "Duración: #{session.getTime} segundos" 
             br
             small = session.timestamp
           td.data 

@@ -22,6 +22,10 @@ class SessionsController < ApplicationController
   def edit
   end
 
+  def last
+    @session = Session.last
+    render :show
+  end
 
   def select
     select_session @session
@@ -62,6 +66,9 @@ class SessionsController < ApplicationController
     @session.left_movs = params["left_movs"]
     @session.right_movs = params["right_movs"]
     @session.reactions = params["reactions"]
+    @session.total_time = params["time"]
+    @session.left_view = params["left_view"]
+    @session.explored = params["explored"]
     select_session @session
     render json: @session
   end

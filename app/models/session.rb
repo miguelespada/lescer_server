@@ -16,6 +16,9 @@ class Session
   field :width, type: Integer
   field :height, type: Integer
   field :size, type: Integer
+  field :total_time, type: Float
+  field :left_view, type: Float
+  field :explored, type: Float
 
   belongs_to :patient
   belongs_to :exercice
@@ -30,6 +33,9 @@ class Session
     self.size
   end
 
- 
+  def getTime
+    return total_time.to_i if !total_time.nil?
+    (getSize/30).to_i
+  end
 
 end

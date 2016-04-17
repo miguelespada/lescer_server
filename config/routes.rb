@@ -22,6 +22,7 @@ TestMongoId::Application.routes.draw do
   resources :sessions do
     member do
       get 'select'
+      get 'last', as: :last
     end
 
     collection do
