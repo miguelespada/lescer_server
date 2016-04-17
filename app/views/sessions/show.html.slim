@@ -24,55 +24,11 @@ div.container
     = "#{100 * (@session.explored.round(4) || 0)} %"
  
   - if @session.exercice.name == "Setas"
-    - values = @session.reactions.split(';')
-    table
-      tr 
-        th Posicion
-        th Items
-        th Media
-        th Fallos
-      - i = 0
-      - total_missed = 0
-      - total_ok = 0
-      - total_time = 0
-      - left_missed = 0
-      - left_ok = 0
-      - left_time = 0
-      - right_missed = 0
-      - right_ok = 0
-      - right_time = 0
-      - while i < values.count
-        - m = 0
-        - p = values[i].to_i
-        - items = values [i + 1].to_i
-        - m = values [i + 2].to_f / items if items > 0
-        - l = values [i + 3].to_i
-        - total_ok += items
-        - total_missed += l
-        - total_time += values [i + 2].to_f
-        - if p < 4
-          - left_ok += items
-          - left_missed += l
-          - left_time += values [i + 2].to_f
-        - else
-          - right_ok += items
-          - right_missed += l
-          - right_time += values [i + 2].to_f
-        tr
-          td = p
-          td = items
-          td = m.round(2)
-          td = l 
-        - i = i + 4 
-    p 
-      strong TOTAL 
-      = "#{total_ok}/#{total_missed}, #{(total_time.to_f / total_ok.to_f).round(2)}s"
-    p 
-      strong IZQUIERDA: 
-      = "#{left_ok}/#{left_missed}, #{(left_time.to_f / left_ok.to_f).round(2)}s"
-    p 
-      strong DERECHA: 
-      = "#{right_ok}/#{right_missed}, #{(right_time.to_f / right_ok.to_f).round(2)}s"
+    == render "setas_show"
+
+  p 
+    strong MOVIMIENTOS JOYSTICK 
+    = "#{@session.left_movs} /  #{@session.right_movs}"
 
 
   p
