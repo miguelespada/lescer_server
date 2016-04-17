@@ -1,0 +1,27 @@
+table
+  thead
+    tr
+      th Tecla
+      th Texto
+      th Maximo Tiempo
+      th Numero de Frutas
+      th Tiempo maximo de fruta
+      th Codigo ejercicio
+      th
+      th
+
+  tbody
+    - @fruits.each_with_index do |fruit, i|
+      tr
+        td = i + 1
+        td = fruit.texto
+        td = fruit.maximo_tiempo
+        td = fruit.numero_frutas
+        td = fruit.items_life
+        td = fruit.code
+        td = link_to 'Editar', edit_fruit_path(fruit)
+        td = link_to 'Borrar', fruit, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'Nuevo ejercicio', new_fruit_path

@@ -1,0 +1,26 @@
+= simple_form_for(@fruit) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :texto, as: :text
+  .form-inputs
+    = f.input :maximo_tiempo
+  .form-inputs
+    = f.input :numero_frutas
+  .form-inputs
+    = f.input :items_life
+    
+  ul
+    li 0 - Sin frutas
+    li 1 - Una fruta
+    li 2 - Dos frutas
+    li 3 - Muchas frutas
+    li 4 - Platano
+    li 5 - Solo manzanas
+    li 6 - Solo frutas
+
+  .form-inputs
+    = f.input :code
+
+  .form-actions
+    = f.button :submit

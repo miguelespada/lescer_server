@@ -1,5 +1,8 @@
 TestMongoId::Application.routes.draw do
 
+  get 'fruit/:index' => 'fruits#select'
+  resources :fruits
+
   devise_for :users
 
   post 'exerciceByName'  =>  'exercices#selectByName'

@@ -21,7 +21,7 @@ div.container
  
   p 
     strong EXPLORADO: 
-    = "#{100 * (@session.explored || 0).round(8)} %"
+    = "#{100 * (@session.explored.round(4) || 0)} %"
  
   - if @session.exercice.name == "Setas"
     - values = @session.reactions.split(';')
@@ -65,14 +65,14 @@ div.container
           td = l 
         - i = i + 4 
     p 
-      strong TOTAL: 
-      = "#{total_ok}/#{total_missed} \t mean : #{(total_time.to_f / total_ok.to_f).round(2)}"
+      strong TOTAL 
+      = "#{total_ok}/#{total_missed}, #{(total_time.to_f / total_ok.to_f).round(2)}s"
     p 
       strong IZQUIERDA: 
-      = "#{left_ok}/#{left_missed} \t mean : #{(left_time.to_f / left_ok.to_f).round(2)}"
+      = "#{left_ok}/#{left_missed}, #{(left_time.to_f / left_ok.to_f).round(2)}s"
     p 
       strong DERECHA: 
-      = "#{right_ok}/#{right_missed} \t mean : #{(right_time.to_f / right_ok.to_f).round(2)}"
+      = "#{right_ok}/#{right_missed}, #{(right_time.to_f / right_ok.to_f).round(2)}s"
 
 
   p
