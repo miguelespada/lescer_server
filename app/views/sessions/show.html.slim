@@ -21,14 +21,14 @@ div.container
  
   p 
     strong EXPLORADO: 
-    = "#{100 * (@session.explored.round(4) || 0)} %"
+    = "#{100 * (@session.explored || 0).round(4)} %"
  
   - if @session.exercice.name == "Setas"
     == render "setas_show"
-
-  p 
-    strong MOVIMIENTOS JOYSTICK 
-    = "#{@session.left_movs} /  #{@session.right_movs}"
+  - else
+    p 
+      strong MOVIMIENTOS JOYSTICK 
+      = "#{@session.left_movs} /  #{@session.right_movs}"
 
 
   p
