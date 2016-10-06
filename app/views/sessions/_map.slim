@@ -1,0 +1,9 @@
+h1 ---
+- if session.patient?
+  = image_tag  "/imgs/" + session.timestamp + "_" + session.patient.name + ".png", width: "400px"
+  br
+  = session.deviation_x
+  br
+  = session.deviation_y
+  br
+  = ((session.deviation_x + session.deviation_y) / 2).round(2)

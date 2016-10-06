@@ -18,6 +18,9 @@ class SessionsController < ApplicationController
     @session = Session.new
   end
 
+  def maps
+  end
+
   # GET /sessions/1/edit
   def edit
   end
