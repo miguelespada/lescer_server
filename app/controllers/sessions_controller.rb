@@ -68,6 +68,7 @@ class SessionsController < ApplicationController
     @session.reactions = params["reactions"]
     @session.total_time = params["time"]
     @session.left_view = params["left_view"]
+    @session.right_view = params["right_view"]
     @session.explored = params["explored"]
     select_session @session
     render json: @session

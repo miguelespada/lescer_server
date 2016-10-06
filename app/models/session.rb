@@ -18,6 +18,7 @@ class Session
   field :size, type: Integer
   field :total_time, type: Float
   field :left_view, type: Float
+  field :right_view, type: Float
   field :explored, type: Float
 
   belongs_to :patient
@@ -36,6 +37,12 @@ class Session
   def getTime
     return total_time.to_i if !total_time.nil?
     (getSize/30).to_i
+  end
+
+  def center_view
+    100 - left_view - right_view
+  rescue
+    0
   end
 
 end
