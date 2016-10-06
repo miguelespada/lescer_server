@@ -17,8 +17,7 @@ div.container
     = @session.comments
   p 
     strong MIRANDO A LA IZQUIERDA/DERECHA: 
-    = "#{(@session.left_view || 0).round(2)}  / #{100 - (@session.left_view || 0).round(2)} %"
- 
+    = "#{100 - (@session.left_view || 0).round(2)} / #{(@session.left_view || 0).round(2)}"
   p 
     strong EXPLORADO: 
     = "#{100 * (@session.explored || 0).round(4)} %"
