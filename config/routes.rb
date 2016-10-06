@@ -29,6 +29,7 @@ TestMongoId::Application.routes.draw do
     end
 
     collection do
+      get 'maps'
       post 'upload'
       get 'selected'
     end
