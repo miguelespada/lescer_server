@@ -42,14 +42,12 @@ class Session
     (getSize/30).to_i
   end
 
-<<<<<<< HEAD
   def center_view
     100 - left_view - right_view
   rescue
     0
   end
 
-=======
   def compute_deviation
     xx = []
     yy = []
@@ -89,5 +87,4 @@ class Session
       s.compute_deviation
     end
   end
->>>>>>> f8293e21629315abfec279b9dcb27d7744256e54
 end
