@@ -1,9 +1,11 @@
-h1 ---
 - if session.patient?
-  = image_tag  "/imgs/" + session.timestamp + "_" + session.patient.name + ".png", width: "400px"
-  br
-  = session.deviation_x
-  br
-  = session.deviation_y
-  br
-  = ((session.deviation_x + session.deviation_y) / 2).round(2)
+  = image_tag  "/LESCER_DATA/" + session.timestamp + "_" + session.patient.name + ".png", width: "400px"
+  p
+    strong Dispersión vertical: 
+    = session.deviation_x
+  p
+    strong Dispersión horizontal: 
+    = session.deviation_y
+  p
+    strong Dispersión total: 
+    = ((session.deviation_x + session.deviation_y) / 2).round(2)

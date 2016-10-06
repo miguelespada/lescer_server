@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-ruby '2.1.5' #Windows ruby version
+# ruby '2.1.5' #Windows ruby version
 # ruby '2.2.1'
 
 gem "bson_ext"
