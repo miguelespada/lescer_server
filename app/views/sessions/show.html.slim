@@ -1,14 +1,5 @@
 
 div.container
-  p 
-    strong Dispersión vertical
-    = @session.deviation_x
-  p 
-    strong Dispersión horizontal
-    = @session.deviation_y
-  p 
-    strong Dispersión total
-    = ((@session.deviation_x + @session.deviation_y) / 2).round(2)
   p
     strong TIME: 
     = @session.timestamp
@@ -31,6 +22,16 @@ div.container
   p 
     strong EXPLORADO: 
     = "#{100 * (@session.explored || 0).round(4)} %"
+    
+  p 
+    strong Dispersión vertical: 
+    = @session.deviation_x
+  p 
+    strong Dispersión horizontal: 
+    = @session.deviation_y
+  p 
+    strong Dispersión total: 
+    = ((@session.deviation_x + @session.deviation_y) / 2).round(2)
  
   - if @session.exercice.name == "Setas"
     == render "setas_show"
