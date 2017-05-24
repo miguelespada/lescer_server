@@ -42,3 +42,4 @@ gem 'simple_form', github: 'plataformatec/simple_form', branch: 'master'
 gem "slim-rails"
 
 gem "descriptive_statistics"
+gem 'bcrypt', '~> 3.1.11'

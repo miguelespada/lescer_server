@@ -35,8 +35,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
-    bcrypt (3.1.10)
-    bcrypt (3.1.10-x86-mingw32)
+    bcrypt (3.1.11)
+    bcrypt (3.1.11-x86-mingw32)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     bootstrap-timepicker-rails-addon (0.2.6.1)
@@ -186,6 +186,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  bcrypt (~> 3.1.11)
   bootstrap-sass (~> 2.3.2.0)
   bootstrap-timepicker-rails-addon
   bson_ext
@@ -209,4 +210,4 @@ DEPENDENCIES
   will_paginate_mongoid
 
 BUNDLED WITH
-   1.11.2
+   1.13.6
